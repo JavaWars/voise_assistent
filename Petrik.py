@@ -8,8 +8,7 @@ import datetime
 
 # настройки
 opts = {
-    "alias": ('Компик','пк','євм','эвм','джарвис','алиса',
-              'томас','олег','инна','инокентий','кэша'),
+    "alias": ('бот',',ботик','комп','компик','джарвис'),
     "tbr": ('скажи','расскажи','покажи','сколько','произнеси'),
     "cmds": {
         "ctime": ('текущее время','сейчас времени','который час'),
@@ -73,29 +72,25 @@ def execute_cmd(cmd):
     
     elif cmd == 'stupid1':
         # рассказать анекдот
-        speak("Мой разработчик не научил меня анекдотам ... Ха ха ха")
+        speak("Мой разработчик не научил меня анекдотам ")
     
     else:
         print('Команда не распознана, повторите!')
 
 # запуск
 r = sr.Recognizer()
-m = sr.Microphone(device_index = 1)
+m = sr.Microphone(device_index = 2)
 
 with m as source:
     r.adjust_for_ambient_noise(source)
 
 speak_engine = pyttsx3.init()
 
-# Только если у вас установлены голоса для синтеза речи!
-# voices = speak_engine.getProperty('voices')
-# speak_engine.setProperty('voice', voices[4].id)
-
 # forced cmd test
-speak("Мой разработчик не научил меня анекдотам ... Ха ха ха")
+speak("Мой разработчик не научил меня анекдотам")
 
 speak("Добрый день, повелитель")
-speak("Кеша слушает")
+speak("Бот слушает")
 
 stop_listening = r.listen_in_background(m, callback)
 while True: time.sleep(0.1) # infinity loop
